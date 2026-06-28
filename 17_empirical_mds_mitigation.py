@@ -21,9 +21,9 @@ Empirical Marginal Distribution Sampling (MDS) makes zero assumptions:
 
 THE MATHEMATICAL EXPLANATION (Latex format):
 Let $X$ be the feature vector. By sampling $x_i \sim P(X)$ purely randomly,
-we perfectly preserve the global mean ($\mu$), variance ($\sigma^2$), skewness,
+we preserve the global mean ($\mu$), variance ($\sigma^2$), skewness,
 and exact zero-inflation of the bacteria.
-However, we completely annihilate the correlation between the count $x_i$
+However, we annihilate the correlation between the count $x_i$
 and the hospital $h_i$ or patient $y_i$. It destroys the geographic barcode
 while guaranteeing zero Data Leakage (since we don't look at the ASD/NT label
 during the resampling).
