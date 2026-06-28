@@ -2,7 +2,7 @@
 """
 24_supplementary_montecarlo_validation.py
 
-SUPPLEMENTARY MATERIAL GENERATOR (ULTIMATE EDITION - DETERMINISTIC)
+SUPPLEMENTARY MATERIAL GENERATOR DETERMINISTIC
 Objective: Generate statistical proof of the sterilization pipeline's robustness
 through Sensitivity Sweeps, Distributional Leakage tests, and Monte Carlo simulations.
 
@@ -11,26 +11,25 @@ SCIENTIFIC JUSTIFICATION: THE 3 PILLARS OF VALIDATION
 ---------------------------------------------------------------------------
 
 VALIDATION 1: High-Resolution WSS Threshold Sensitivity Analysis
-Reviewers will ask: "Why did you choose the 75th percentile for WSS?"
-This validation sweeps through thresholds ($\tau_{WSS}$) from P50 to P90.
+This validation sweeps through thresholds for WSS from P50 to P90.
 It proves that our choice isn't arbitrary. By plotting Clinical AUC vs.
-Inquisitor Accuracy, we empirically demonstrate the "Optimal Resilience"
+Inquisitor Accuracy, we show the "Optimal Resilience"
 zone where the geographic barcode is destroyed, but the biological signal peaks.
 
 VALIDATION 2: Distributional Leakage Assessment (Wasserstein Distance)
 When we impute pseudo-zeros, do we destroy the natural biological heterogeneity?
-We use the Earth Mover's Distance (Wasserstein metric, $W_1$) to compare the
+We use the Earth Mover's Distance (Wasserstein metric, W_1) to compare the
 probability distributions of the raw data vs. the sterilized data. A Mann-Whitney
-U test proves with statistical significance ($p < 0.05$) that our sterilization
+U test proves with statistical significance (p < 0.05) that our sterilization
 preserves (or enhances by removing noise) the true biological divergence between
 patients, preventing "Semantic Collapse".
 
 VALIDATION 3: Monte Carlo Imputation Stability
 Since Marginal Distribution Sampling (MDS) relies on random resampling with
 replacement, we must prove the results are deterministic at a macro level.
-By running the entire imputation and training pipeline $N=250$ times with
+By running the entire imputation and training pipeline N=250 times with
 different random seeds (Monte Carlo simulation), we invoke the Law of Large Numbers.
-If the resulting Clinical AUC shows a microscopic variance ($\sigma^2 \to 0$),
+If the resulting Clinical AUC shows a microscopic variance,
 we prove the method is fundamentally stable and immune to "lucky seeds".
 
 PREREQUISITES:
