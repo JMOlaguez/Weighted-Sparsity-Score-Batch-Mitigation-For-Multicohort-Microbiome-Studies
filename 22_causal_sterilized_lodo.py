@@ -16,22 +16,22 @@ If we randomly split, the model might still memorize the batch effect because
 patients from "Hospital A" are in both the training and test sets.
 
 LODO is the ultimate spatial test:
-If we have $N$ hospitals, we train the model on $N-1$ hospitals and test it
-on the entirely unseen $N$-th hospital. We repeat this until every hospital
+If we have N hospitals, we train the model on N-1 hospitals and test it
+on the entirely unseen N-th hospital. We repeat this until every hospital
 has been the test set. This simulates deploying the AI in a brand new clinic.
 
 ---------------------------------------------------------------------------
-CRITICAL METHODOLOGY: NESTED CAUSAL STERILIZATION (ZERO LEAKAGE)
+CRITICAL METHODOLOGY: NESTED CAUSAL STERILIZATION
 ---------------------------------------------------------------------------
 If we calculate the WSS (Weighted Sparsity Score) and extract the positive
 empirical distributions using the ENTIRE dataset before doing the LODO split,
 we commit a mortal sin of Data Science: Data Leakage.
 
 To maintain 100% scientific purity, this script does "Nested Sterilization":
-1. Isolate the $N-1$ training hospitals.
+1. Isolate the N-1 training hospitals.
 2. Calculate WSS and find toxic bacteria *only* in this training fold.
 3. Extract the positive distribution arrays *only* from this training fold.
-4. "Transform" the $N$-th test hospital using the parameters learned from the training fold.
+4. "Transform" the N-th test hospital using the parameters learned from the training fold.
 This guarantees the test hospital remains mathematically unseen and pure.
 
 PREREQUISITES:
